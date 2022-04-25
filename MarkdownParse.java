@@ -17,6 +17,13 @@ public class MarkdownParse {
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
 
+            // Code change for test-file-2.md
+            if(openBracket == -1 || closeBracket == -1 || openParen == -1 || 
+                closeParen == -1) {
+                currentIndex = markdown.length();
+                break;
+            }
+            
             // Code change for test-file-1.md
             String checkingForError = markdown.substring(closeParen + 1);
             int PotenParen = markdown.indexOf(")", closeParen + 1);
