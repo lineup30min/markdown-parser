@@ -12,7 +12,6 @@ public class MarkdownParse {
         // find the next [, then find the ], then find the (, then read link upto next )
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
-            // Code change fore test-file-3.md
             int exclamation = markdown.indexOf("!", 0);
             int openBracket = markdown.indexOf("[", currentIndex);
             if(exclamation < openBracket && exclamation != -1){
@@ -22,26 +21,20 @@ public class MarkdownParse {
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
 
-            // Code change for test-file-2.md
-            if (openBracket == -1 || closeBracket == -1 || openParen == -1 || 
-                closeParen == -1) {
+            if(openBracket == -1 || closeBracket == -1 || openParen == -1 || closeParen == -1){
                 currentIndex = markdown.length();
                 break;
             }
 
-            // Code change for test-file-1.md
-            String checkingForError = markdown.substring(closeParen + 1);
-            int PotenParen = markdown.indexOf(")", closeParen + 1);
-            if (checkingForError.contains(")") && 
-                checkingForError.indexOf(")", 0) < 
-                checkingForError.indexOf("[", 0)) {
-                closeParen = PotenParen;
+            if (closeBracket + 1 != openParen ) {
+                break;
             }
 
+            else {
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
+            }
         }
-
         return toReturn;
     }
 
