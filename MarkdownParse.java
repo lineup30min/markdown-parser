@@ -17,7 +17,12 @@ public class MarkdownParse {
             if(exclamation < openBracket && exclamation != -1){
                 break;
             }
+                
             int closeBracket = markdown.indexOf("]", openBracket);
+            if (markdown.indexOf("/n") < closeBracket) {
+                break;
+            }
+            
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
 
