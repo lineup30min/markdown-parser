@@ -83,14 +83,5 @@ public class MarkdownParseTest {
         List<String> empty = new ArrayList <String>();
 	    assertEquals(empty, links);
     }
-
-    @Test 
-    public void testGetLinksinfile9() throws IOException{
-        Path fileName = Path.of("/Users/summerpines/Documents/GitHub/markdown-parser/space-in-link-and-image.md");
-        String content = Files.readString(fileName);
-        List<String> links = MarkdownParse.getLinks(content);
-	    assertEquals(List.of("https://something.com","some-page.html"), links);
-    }
-
-
+    
 }
