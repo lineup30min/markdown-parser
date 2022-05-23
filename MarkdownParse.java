@@ -23,6 +23,14 @@ public class MarkdownParse {
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
 
+            String checkingForError = markdown.substring(closeParen + 1);
+            int PotenParen = markdown.indexOf(")", closeParen + 1);
+            if (checkingForError.contains(")") && 
+                checkingForError.indexOf(")", 0) < 
+                checkingForError.indexOf("[", 0)) {
+                closeParen = PotenParen;
+            }
+            
             if(openBracket == -1 || closeBracket == -1 || openParen == -1 || closeParen == -1){
                 currentIndex = markdown.length();
                 break;
